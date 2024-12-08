@@ -24,15 +24,15 @@ public class Day7 {
             long result = Long.parseLong(equation.split(":")[0]);
 
             List<Long> numbers = Arrays.stream(
-                    equation.split(":")[1]
-                            .trim()
-                            .split(" "))
+                            equation.split(":")[1]
+                                    .trim()
+                                    .split(" "))
                     .mapToLong(Long::parseLong)
                     .boxed()
                     .toList();
 
             // So I asked my wife what the stupidest way would be to solve this, and she came up with this:
-            if(isSolvable(result, numbers, maxAttempts)) {
+            if (isSolvable(result, numbers, maxAttempts)) {
                 total += result;
             }
         }
@@ -45,16 +45,16 @@ public class Day7 {
         long current = 0;
         long attempts = 0;
 
-        while(current != result && attempts < maxAttempts) {
+        while (current != result && attempts < maxAttempts) {
             current = 0;
-            for(int i = 0; i < numbers.size(); i++) {
-                if(i > 0) {
-                    if(rand.nextBoolean()) {
+            for (int i = 0; i < numbers.size(); i++) {
+                if (i > 0) {
+                    if (rand.nextBoolean()) {
                         current += numbers.get(i);
-                    }else{
+                    } else {
                         current *= numbers.get(i);
                     }
-                }else{
+                } else {
                     current = numbers.get(i);
                 }
             }
